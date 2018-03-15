@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
 export const customersSchema = new Schema({
 	email:{
@@ -19,7 +20,7 @@ export const customersSchema = new Schema({
         required:true,
     },
     address:String,
-    invoiceId:[Schema.Types.ObjectId]
+    invoiceId:[String]
 });
 
 export const Customers = mongoose.model('Customers', customersSchema);

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { tasksSchema } from './index'
+import { tasksSchema } from './tasks'
 const Schema = mongoose.Schema;
 
 export const invoiceSchema = new Schema({
