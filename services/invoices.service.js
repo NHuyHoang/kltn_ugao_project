@@ -1,42 +1,56 @@
 import mongoose from 'mongoose';
-import { Invoices, Customers } from '../models';
+import { Invoices, Customers, Shippers } from '../models';
 import _ from 'lodash';
 
 export default {
     findAll: () => {
         return Invoices.find({});
     },
-    findCustomerInvoices: (customerId) => {
-        return Customers.find({ _id: customerId })
+    findMany: (ids) => {
+        return findMany(ids);
+    },
+    findOne: (id) => {
+        return findOne(id);
+    },
+    findUserInvoices: (userId, modelName) => {
+        let model;
+        if(modelName === 'Customers')
+            model = Customers
+        else
+            model = Shippers
+        return model.findOne({ _id: userId })
             .catch(err => err)
-            .then(customers => customers[0])
-            .then(customer => {/* 
-                return new Promise((resolve,reject) => {
-                    setTimeout(() => {
-                        resolve([{_id:'1',price:'2'},{_id:'3',price:'4'}])
-                    },1000)
-                }) */
-                const invoicesCount = customer.invoiceId.length;
-                if (invoicesCount === 0)
-                    return [];
-                const results = [];
-                return new Promise((resolve, reject) => {
-                        customer.invoiceId.forEach((id, index) => {
-                            findOne(id)
-                                .then(invoice => {
-                                    const result = Object.assign({}, invoice);
-                                    results.push(result._doc);
-                                    if (results.length === invoicesCount)
-                                        resolve(results)
-                                })
-                                .catch(err => err)
-
-                        })
-                })
+            .then(user => {
+                const invoicesCount = user.invoiceId.length;
+                return findMany(user.invoiceId);
             });
     }
 }
 
 const findOne = (id) => {
     return Invoices.findOne({ _id: id });
-}   
+}
+
+const findMany = (ids) => {
+    if (ids.length === 0) return [];
+    return new Promise((resolve, reject) => {
+        let result = [];
+        let founded = 0;
+        ids.forEach(id => {
+            findOne(id)
+                .catch(err => {
+                    console.log(err);
+                    founded++;
+                    if (founded === ids.length)
+                        resolve(result);
+                })
+                .then(invoice => {
+                    let obj = Object.assign({}, invoice._doc);
+                    result.push(obj);
+                    founded++;
+                    if (founded === ids.length)
+                        resolve(result);
+                })
+        })
+    })
+}

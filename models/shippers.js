@@ -8,7 +8,7 @@ export const shippersSchema = new Schema({
     email: { type: String, required: true },
     pass: { type: String, required: true },
     img: { type: String, required: true },
-    tasks: [Schema.Types.ObjectId]
+    invoiceId: [String]
 });
 
 export const Shippers = mongoose.model('Shippers', shippersSchema);
