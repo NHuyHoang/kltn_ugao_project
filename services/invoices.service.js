@@ -28,29 +28,10 @@ export default {
 }
 
 const findOne = (id) => {
-    return Invoices.findOne({ _id: id });
+    return Invoices.findOne({ _id: id });s
 }
 
 const findMany = (ids) => {
     if (ids.length === 0) return [];
-    return new Promise((resolve, reject) => {
-        let result = [];
-        let founded = 0;
-        ids.forEach(id => {
-            findOne(id)
-                .catch(err => {
-                    console.log(err);
-                    founded++;
-                    if (founded === ids.length)
-                        resolve(result);
-                })
-                .then(invoice => {
-                    let obj = Object.assign({}, invoice._doc);
-                    result.push(obj);
-                    founded++;
-                    if (founded === ids.length)
-                        resolve(result);
-                })
-        })
-    })
+    return  Invoices.find({ _id: { $in: ids } })
 }

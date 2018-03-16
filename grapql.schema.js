@@ -1,5 +1,12 @@
 const graphql = require('graphql');
-import { invoicesService, customersService, shippersService, reviewsService, productsService } from './services'
+import { 
+    invoicesService, 
+    customersService, 
+    shippersService, 
+    reviewsService, 
+    productsService, 
+    producersService 
+} from './services'
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -32,8 +39,13 @@ const InvoiceType = new GraphQLObjectType({
         paid: { type: GraphQLBoolean },
         price: { type: GraphQLInt },
         payment_method: { type: GraphQLString },
-        productId: { type: GraphQLList(GraphQLString) },
         tasks: { type: TaskType },
+        products: { 
+            type: GraphQLList(ProductType),
+            resolve(parentValue, args) {
+                return productsService.findByInvoiceId(parentValue._id);
+            }
+        },
         customer: {
             type: CustomerType,
             resolve(parentValue, args) {
@@ -113,8 +125,34 @@ const ProductType = new GraphQLObjectType({
         img: { type: GraphQLString },
         description: { type: GraphQLString },
         rating: { type: GraphQLInt },
+        price: { type: GraphQLInt },
+        producer:{
+            type: ProducerType,
+            resolve(parentValue, args){
+                return producersService.findByProductId(parentValue._id)
+            }
+        },
         reviews: {
             type: new GraphQLList(ReviewType),
+        }
+    })
+});
+
+const ProducerType = new GraphQLObjectType({
+    name: 'Producer',
+    fields: () => ({
+        _id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        address: { type: GraphQLString },
+        phone: { type: GraphQLString },
+        email: { type: GraphQLString },
+        description:  { type: GraphQLString },
+        img: { type: GraphQLList(GraphQLString) },
+        products: {
+            type: GraphQLList(ProducerType),
+            resolve(parentValue, args){
+                return producersService.findProducts(parentValue._id);
+            }
         }
     })
 });
@@ -169,6 +207,19 @@ const RootQuery = new GraphQLObjectType({
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
                 return productsService.findOne(args.id)
+            }
+        },
+        products:{
+            type: GraphQLList(ProductType),
+            resolve(parentValue, args){
+                return productsService.findAll()
+            }
+        },
+        producer:{
+            type: ProducerType,
+            args: { id: { type: GraphQLString }},
+            resolve(parentValue, args){
+                return producersService.findOne(args.id)
             }
         }
     }

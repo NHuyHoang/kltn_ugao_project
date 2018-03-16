@@ -11,6 +11,7 @@ export default {
             .catch(err => err)
             .then(product => {
                 let resultReview;
+                if(product.reviews === null || product.reviews.length === 0) return [];
                 product.reviews.forEach(review => {
                     if(review._id.toString() === reviewId.toString())
                     {

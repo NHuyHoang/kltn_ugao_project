@@ -9,6 +9,7 @@ export const productsSchema = new Schema({
     description: { type: String },
     img: { type: String, required: true },
     rating: { type: Number, default: 0 },
+    price: { type: Number, required: true },
     reviews: [reviewsSchema]
 });
 

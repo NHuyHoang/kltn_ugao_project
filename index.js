@@ -33,53 +33,26 @@ app.listen(8000, () => {
     console.log('listening on port 8000');
 });
 
-/* import { Products, Reviews } from './models';
-import { reviewsService,productsService } from './services';
+/* import { customersService } from './services';
 
-reviewsService.findCustomerByReviewId('5aaa47136fa27337b0bc21a2')
+customersService.findCustomerByInvoiceId('5aa935af0c7e801290fbb843')
     .then(data => console.log(data))
-    .catch(err => console.log(err)) */
+    .catch(data => console.log(data)) */
+/* import { Producers } from './models';
 
-/* let rev1 = new Reviews({
-    content: `Maecenas purus libero, sodales quis lobortis ac, sagittis quis lacus. Duis tincidunt vehicula ipsum a volutpat. Cras pulvinar, tortor vitae facilisis dapibus, neque quam malesuada massa, vel semper tortor ligula sit amet arcu. Ut ac felis nisl. Nullam magna augue, placerat sed tincidunt quis, mollis ac felis. Donec justo nulla, auctor vel mi sit amet, malesuada laoreet velit.`,
-    customerId:'5aa7d8587e4f1342f85afd59',
-    date_review: new Date()
+let producer = new Producers({
+    name:"producer 2",
+    address: "23 Duis suscipit str",
+    phone: "(623)456-125",
+    email: "producer2@gmail.com",
+    descripttion: "Duis suscipit bibendum nisi. Curabitur luctus vel nisi sed pellentesque. Suspendisse interdum mauris a tempor luctus. Integer finibus sit amet ipsum ac sagittis. Pellentesque ac posuere diam. Ut commodo felis ut mi pulvinar, ullamcorper semper felis tempor. Nunc mattis imperdiet justo, rhoncus tempor nisl bibendum id. Donec euismod eu eros non laoreet. Nullam mollis bibendum lacus et auctor. Aenean augue libero, ullamcorper sit amet egestas at, ultricies quis est. ",
+    img: [
+        "https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg",
+        "https://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"
+    ],
+    productId:[
+        "5aaa47136fa27337b0bc21a4",
+    ]
 })
 
-let rev2 = new Reviews({
-    content: `Semper tortor ligula sit amet arcu. Ut ac felis nisl. Nullam magna augue, placerat sed tincidunt quis, mollis ac felis. Donec justo nulla, auctor vel mi sit amet, malesuada laoreet velit.`,
-    customerId:'5aa7d9f121b7e032a81e4ea0',
-    date_review: new Date()
-})
-
-let product = new Products({
-    name:'Semper tortor ligula',
-    amount:10000,
-    type:'sodales quis lobortis',
-    description: 'auctor vel mi sit amet, malesuada laoreet velit.',
-    img:'https://s3.amazonaws.com/uifaces/faces/twitter/scrapdnb/128.jpg',
-    rating:4,
-    reviews:[rev1,rev2]
-})
-
-product.save().then(data => console.log(data)).catch(err => console.log(err)) */
-
-/* import { invoicesService } from './services';
-invoicesService.findMany(["5aa935af0c7e801290fbb843","5aa935d5922e340c201c34cd"])
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
- */
-
-/* import { Shippers } from './models';
-
-let ship  = new Shippers({
-    name: "David Chen",
-    phone: "+788936935993",
-    address: "996 Stan Cove",
-    email: "Wilford.Blanda@yahoo.com",
-    pass: "1T60G9FXPVWAISLAWJ7B3AHT26IZ",
-    img: "https://s3.amazonaws.com/uifaces/faces/twitter/designervzm/128.jpg",
-    invoiceId: ["5aa935d5922e340c201c34cd"]
-})
-
-ship.save().then(data => console.log(data)).catch(err => console.log(err)) */
+producer.save().then(data => console.log(data)) */

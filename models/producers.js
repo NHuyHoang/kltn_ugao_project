@@ -8,7 +8,7 @@ export const producersSchema = new Schema({
     email: { type: String, required: true },
     description: { type: String },
     img: [ String ],
-    productId:[Schema.Types.ObjectId]
+    productId:[ String ]
 });
 
 export const Producers = mongoose.model('Producers', producersSchema);
