@@ -1,12 +1,5 @@
 const graphql = require('graphql');
-import { 
-    invoicesService, 
-    customersService, 
-    shippersService, 
-    reviewsService, 
-    productsService, 
-    producersService 
-} from './services'
+import * as services from '../services'
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -19,7 +12,7 @@ const {
     GraphQLNonNull
 } = graphql;
 
-const TaskType = new GraphQLObjectType({
+export const TaskType = new GraphQLObjectType({
     name: 'Task',
     fields: {
         address: { type: GraphQLString },
@@ -30,7 +23,7 @@ const TaskType = new GraphQLObjectType({
     }
 })
 
-const InvoiceType = new GraphQLObjectType({
+export const InvoiceType = new GraphQLObjectType({
     name: 'Invoice',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -43,25 +36,25 @@ const InvoiceType = new GraphQLObjectType({
         products: { 
             type: GraphQLList(ProductType),
             resolve(parentValue, args) {
-                return productsService.findByInvoiceId(parentValue._id);
+                return services.productsService.findByInvoiceId(parentValue._id);
             }
         },
         customer: {
             type: CustomerType,
             resolve(parentValue, args) {
-                return customersService.findCustomerByInvoiceId(parentValue._id.toString())
+                return services.customersService.findCustomerByInvoiceId(parentValue._id.toString())
             }
         },
         shipper: {
             type: ShipperType,
             resolve(parentValue, args) {
-                return shippersService.findShipperByInvoiceId(parentValue._id.toString())
+                return services.shippersService.findShipperByInvoiceId(parentValue._id.toString())
             }
         },
     })
 });
 
-const ShipperType = new GraphQLObjectType({
+export const ShipperType = new GraphQLObjectType({
     name: 'Shipper',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -74,14 +67,14 @@ const ShipperType = new GraphQLObjectType({
         invoices: {
             type: new GraphQLList(InvoiceType),
             resolve(parentValue, args) {
-                return invoicesService.findUserInvoices(parentValue._id, 'Shippers')
+                return services.invoicesService.findUserInvoices(parentValue._id, 'Shippers')
             }
         }
     })
 });
 
 
-const CustomerType = new GraphQLObjectType({
+export const CustomerType = new GraphQLObjectType({
     name: 'Customer',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -94,13 +87,13 @@ const CustomerType = new GraphQLObjectType({
         invoices: {
             type: new GraphQLList(InvoiceType),
             resolve(parentValue, args) {
-                return invoicesService.findUserInvoices(parentValue._id, 'Customers')
+                return services.invoicesService.findUserInvoices(parentValue._id, 'Customers')
             }
         }
     })
 });
 
-const ReviewType = new GraphQLObjectType({
+export const ReviewType = new GraphQLObjectType({
     name: 'Review',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -109,13 +102,13 @@ const ReviewType = new GraphQLObjectType({
         customer:{
             type:CustomerType,
             resolve(parentValue,args){
-                return reviewsService.findCustomerByReviewId(parentValue._id);
+                return services.eviewsService.findCustomerByReviewId(parentValue._id);
             }
         }
     })
 });
 
-const ProductType = new GraphQLObjectType({
+export const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -129,7 +122,7 @@ const ProductType = new GraphQLObjectType({
         producer:{
             type: ProducerType,
             resolve(parentValue, args){
-                return producersService.findByProductId(parentValue._id)
+                return services.producersService.findByProductId(parentValue._id)
             }
         },
         reviews: {
@@ -138,7 +131,7 @@ const ProductType = new GraphQLObjectType({
     })
 });
 
-const ProducerType = new GraphQLObjectType({
+export const ProducerType = new GraphQLObjectType({
     name: 'Producer',
     fields: () => ({
         _id: { type: GraphQLString },
@@ -151,81 +144,8 @@ const ProducerType = new GraphQLObjectType({
         products: {
             type: GraphQLList(ProducerType),
             resolve(parentValue, args){
-                return producersService.findProducts(parentValue._id);
+                return services.producersService.findProducts(parentValue._id);
             }
         }
     })
 });
-
-
-
-const RootQuery = new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-        customer: {
-            type: CustomerType,
-            args: { id: { type: GraphQLString } },
-            resolve(parentValue, args) {
-                return customersService.findOne(args.id)
-            }
-
-        },
-        customers: {
-            type: GraphQLList(CustomerType),
-            resolve(parentValue, args) {
-                return customersService.findAll()
-            }
-        },
-        invoice: {
-            type: InvoiceType,
-            args: { id: { type: GraphQLString } },
-            resolve(parentValue, args) {
-                return invoicesService.findOne(args.id)
-            }
-        },
-        invoices: {
-            type: GraphQLList(InvoiceType),
-            resolve(parentValue, args) {
-                return invoicesService.findAll()
-            }
-        },
-        shipper: {
-            type: ShipperType,
-            args: { id: { type: GraphQLString } },
-            resolve(parentValue, args) {
-                return shippersService.findOne(args.id)
-            }
-        },
-        shippers: {
-            type: GraphQLList(ShipperType),
-            resolve(parentValue, args) {
-                return shippersService.findAll()
-            }
-        },
-        product:{
-            type: ProductType,
-            args: { id: { type: GraphQLString } },
-            resolve(parentValue, args) {
-                return productsService.findOne(args.id)
-            }
-        },
-        products:{
-            type: GraphQLList(ProductType),
-            resolve(parentValue, args){
-                return productsService.findAll()
-            }
-        },
-        producer:{
-            type: ProducerType,
-            args: { id: { type: GraphQLString }},
-            resolve(parentValue, args){
-                return producersService.findOne(args.id)
-            }
-        }
-    }
-})
-
-export default new GraphQLSchema({
-    query: RootQuery
-})
-
