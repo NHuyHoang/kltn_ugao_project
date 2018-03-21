@@ -6,7 +6,7 @@ export default {
     findOne:(id) => {
         return findOne(id);
     },
-    findAll:(id) => {
+    findAll:() => {
         return Producers.find();
     },
     findMany:(ids) => {

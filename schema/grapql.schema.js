@@ -22,7 +22,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return services.customersService.findOne(args.id)
             }
-
+            
         },
         customers: {
             type: GraphQLList(Type.CustomerType),
@@ -75,6 +75,25 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return services.producersService.findOne(args.id)
             }
+        },
+        producers:{
+            type: GraphQLList(Type.ProducerType),
+            resolve(parentValue, args){
+                return services.producersService.findAll()
+            }
+        },
+        store:{
+            type: Type.StoreType,
+            args: { id: {type: GraphQLString } },
+            resolve(parentValue, args) {
+                return services.storesService.findOne(args.id)
+            }
+        },
+        stores:{
+            type: GraphQLList(Type.StoreType),
+            resolve(parentValue, args) {
+                return services.storesService.findAll()
+            }
         }
     }
 })
@@ -97,7 +116,7 @@ const mutation = new GraphQLObjectType({
                 console.log(args);
                 return services.customersService.insert(Object.assign({}, args))
             }
-
+            
         }
     }
 })

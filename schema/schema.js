@@ -14,12 +14,12 @@ const {
 
 export const TaskType = new GraphQLObjectType({
     name: 'Task',
-    fields:() => ({
+    fields: () => ({
         receipt_date: { type: GraphQLString },
         delivered_date: { type: GraphQLString },
         location: {
             type: LocationType,
-            
+
         }
     })
 })
@@ -61,6 +61,12 @@ export const InvoiceType = new GraphQLObjectType({
                 return services.shippersService.findShipperByInvoiceId(parentValue._id.toString())
             }
         },
+        store: {
+            type: StoreType,
+            resolve(parentValue, args){
+                return services.storesService.findByInvoiceId(parentValue._id)
+            }
+        }
     })
 });
 
@@ -144,3 +150,52 @@ export const ProducerType = new GraphQLObjectType({
         }
     })
 });
+
+export const StoreType = new GraphQLObjectType({
+    name: 'Store',
+    fields: () => ({
+        _id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        location: { type: LocationType },
+        invoices: {
+            type: GraphQLList(InvoiceType),
+            resolve(parentValue, args) {
+                return services.storesService.findInvoices(parentValue._id)
+            }
+        },
+        owner: { type: ownerType },
+        storage: { type: GraphQLList(storageItemType) },
+        shippers: {
+            type: GraphQLList(ShipperType),
+            resolve(parentValue, args) {
+                return services.storesService.findShippers(parentValue._id);
+            }
+        }
+    })
+})
+
+export const ownerType = new GraphQLObjectType({
+    name: 'Owner',
+    fields: () => ({
+        _id: { type: GraphQLString },
+        email: { type: GraphQLString },
+        name: { type: GraphQLString },
+        pass: { type: GraphQLString },
+        phone: { type: GraphQLString },
+    })
+});
+
+export const storageItemType = new GraphQLObjectType({
+    name: 'StorageItem',
+    fields: () => ({
+        productId: { type: GraphQLString },
+        product: {
+            type: ProductType,
+            resolve(parentValue, args) {
+                return services.productsService.findOne(parentValue.productId)
+            }
+        },
+        amount: { type: GraphQLFloat },
+        receipt_date: { type: GraphQLString }
+    })
+})

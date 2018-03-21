@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { Invoices, Customers, Shippers } from '../models';
 import _ from 'lodash';
 
@@ -28,7 +27,7 @@ export default {
 }
 
 const findOne = (id) => {
-    return Invoices.findOne({ _id: id });s
+    return Invoices.findOne({ _id: id });
 }
 
 const findMany = (ids) => {
