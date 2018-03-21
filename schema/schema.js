@@ -9,31 +9,41 @@ const {
     GraphQLID,
     GraphQLList,
     GraphQLSchema,
-    GraphQLNonNull
+    GraphQLNonNull,
 } = graphql;
 
 export const TaskType = new GraphQLObjectType({
     name: 'Task',
-    fields: {
+    fields:() => ({
+        receipt_date: { type: GraphQLString },
+        delivered_date: { type: GraphQLString },
+        location: {
+            type: LocationType,
+            
+        }
+    })
+})
+
+export const LocationType = new GraphQLObjectType({
+    name: 'Location',
+    fields: () => ({
         address: { type: GraphQLString },
-        date_recieved: { type: GraphQLString },
-        date_delivered: { type: GraphQLString },
-        dest_lat: { type: GraphQLFloat, },
+        dest_lat: { type: GraphQLFloat },
         dest_log: { type: GraphQLFloat }
-    }
+    })
 })
 
 export const InvoiceType = new GraphQLObjectType({
     name: 'Invoice',
     fields: () => ({
         _id: { type: GraphQLString },
-        date_order: { type: GraphQLString },
+        order_date: { type: GraphQLString },
         amount: { type: GraphQLString },
         paid: { type: GraphQLBoolean },
         price: { type: GraphQLInt },
         payment_method: { type: GraphQLString },
         tasks: { type: TaskType },
-        products: { 
+        products: {
             type: GraphQLList(ProductType),
             resolve(parentValue, args) {
                 return services.productsService.findByInvoiceId(parentValue._id);
@@ -83,51 +93,36 @@ export const CustomerType = new GraphQLObjectType({
         pass: { type: GraphQLString },
         img: { type: GraphQLString },
         phone: { type: GraphQLString },
-        address: { type: GraphQLString },
         invoices: {
             type: new GraphQLList(InvoiceType),
             resolve(parentValue, args) {
                 return services.invoicesService.findUserInvoices(parentValue._id, 'Customers')
             }
+        },
+        location: {
+            type: LocationType
         }
     })
 });
 
-export const ReviewType = new GraphQLObjectType({
-    name: 'Review',
-    fields: () => ({
-        _id: { type: GraphQLString },
-        date_review: { type: GraphQLString },
-        content:  { type: GraphQLString },
-        customer:{
-            type:CustomerType,
-            resolve(parentValue,args){
-                return services.eviewsService.findCustomerByReviewId(parentValue._id);
-            }
-        }
-    })
-});
+
 
 export const ProductType = new GraphQLObjectType({
     name: 'Product',
     fields: () => ({
         _id: { type: GraphQLString },
         name: { type: GraphQLString },
-        amount: { type: GraphQLFloat },
         type: { type: GraphQLString },
         img: { type: GraphQLString },
         description: { type: GraphQLString },
-        rating: { type: GraphQLInt },
+        info: { type: GraphQLString },
         price: { type: GraphQLInt },
-        producer:{
+        producer: {
             type: ProducerType,
-            resolve(parentValue, args){
+            resolve(parentValue, args) {
                 return services.producersService.findByProductId(parentValue._id)
             }
         },
-        reviews: {
-            type: new GraphQLList(ReviewType),
-        }
     })
 });
 
@@ -139,11 +134,11 @@ export const ProducerType = new GraphQLObjectType({
         address: { type: GraphQLString },
         phone: { type: GraphQLString },
         email: { type: GraphQLString },
-        description:  { type: GraphQLString },
+        description: { type: GraphQLString },
         img: { type: GraphQLList(GraphQLString) },
         products: {
             type: GraphQLList(ProducerType),
-            resolve(parentValue, args){
+            resolve(parentValue, args) {
                 return services.producersService.findProducts(parentValue._id);
             }
         }

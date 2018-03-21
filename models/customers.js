@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import locationSchema from './locations'
 const Schema = mongoose.Schema;
 
 export const customersSchema = new Schema({
@@ -19,7 +20,7 @@ export const customersSchema = new Schema({
         type:String,
         required:true,
     },
-    address:String,
+    location: locationSchema,
     invoiceId:[String]
 });
 

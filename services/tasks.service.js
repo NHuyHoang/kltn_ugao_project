@@ -5,7 +5,7 @@ import { Tasks } from '../models';
 export default {
     findOne:(id) => {
         return findOne();
-    },
+    }
 }
 
 const findOne = () => {
