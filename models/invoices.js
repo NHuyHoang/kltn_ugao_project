@@ -8,7 +8,7 @@ export const invoiceSchema = new Schema({
     paid: { type: Boolean, default: false},
     price: { type: Number, required: true},
     payment_method: { type: String },
-    productId:[Schema.Types.ObjectId],
+    products:[Schema.Types.Mixed],
     tasks: tasksSchema
 });
 

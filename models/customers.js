@@ -19,7 +19,8 @@ export const customersSchema = new Schema({
     phone:{
         type:String,
         required:true,
-    },
+	},
+	token: String,
     location: locationSchema,
     invoiceId:[String]
 });

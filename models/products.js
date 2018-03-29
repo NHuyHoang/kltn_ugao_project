@@ -7,6 +7,7 @@ export const productsSchema = new Schema({
     type: { type:String },
     description: { type: String },
     info: { type: String},
+    weight: { type: Number },
     img: { type: String, required: true },
     price: { type: Number, required: true },
 });

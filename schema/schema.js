@@ -16,7 +16,6 @@ export const TaskType = new GraphQLObjectType({
     name: 'Task',
     fields: () => ({
         receipt_date: { type: GraphQLString },
-        delivered_date: { type: GraphQLString },
         location: {
             type: LocationType,
 
@@ -33,6 +32,14 @@ export const LocationType = new GraphQLObjectType({
     })
 })
 
+export const InvoiceProductType = new GraphQLObjectType({
+    name: 'ProductAndQuantity',
+    fields: () => ({
+        product: { type: ProductType },
+        quantity: { type: GraphQLInt }
+    })
+})
+
 export const InvoiceType = new GraphQLObjectType({
     name: 'Invoice',
     fields: () => ({
@@ -44,7 +51,7 @@ export const InvoiceType = new GraphQLObjectType({
         payment_method: { type: GraphQLString },
         tasks: { type: TaskType },
         products: {
-            type: GraphQLList(ProductType),
+            type: GraphQLList(InvoiceProductType),
             resolve(parentValue, args) {
                 return services.productsService.findByInvoiceId(parentValue._id);
             }
@@ -94,6 +101,7 @@ export const CustomerType = new GraphQLObjectType({
     name: 'Customer',
     fields: () => ({
         _id: { type: GraphQLString },
+        token: { type: GraphQLString },
         email: { type: GraphQLString },
         name: { type: GraphQLString },
         pass: { type: GraphQLString },
@@ -123,6 +131,7 @@ export const ProductType = new GraphQLObjectType({
         description: { type: GraphQLString },
         info: { type: GraphQLString },
         price: { type: GraphQLInt },
+        weight: { type: GraphQLInt },
         producer: {
             type: ProducerType,
             resolve(parentValue, args) {

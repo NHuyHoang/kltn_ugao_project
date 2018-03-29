@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 export const tasksSchema = new Schema({
     address: { type: String, required: true },
     receipt_date: { type: Date, required: true },
-    delivered_date: { type: Date, required: true },
     location: locationSchema
 });
 
