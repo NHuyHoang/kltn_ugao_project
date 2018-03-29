@@ -31,7 +31,6 @@ export default {
                             };
                             result.push(resultItem)
                         })
-                        console.log(result)
                         return result
                     })
             })

@@ -173,7 +173,12 @@ export const StoreType = new GraphQLObjectType({
             }
         },
         owner: { type: ownerType },
-        storage: { type: GraphQLList(storageItemType) },
+        storage: { 
+            type: GraphQLList(storageItemType),
+            resolve(parentValue, args) {
+                return services.storesService.findProduct(parentValue._id)
+            }
+        },
         shippers: {
             type: GraphQLList(ShipperType),
             resolve(parentValue, args) {
@@ -197,13 +202,7 @@ export const ownerType = new GraphQLObjectType({
 export const storageItemType = new GraphQLObjectType({
     name: 'StorageItem',
     fields: () => ({
-        productId: { type: GraphQLString },
-        product: {
-            type: ProductType,
-            resolve(parentValue, args) {
-                return services.productsService.findOne(parentValue.productId)
-            }
-        },
+        product: { type: ProductType },
         amount: { type: GraphQLFloat },
         receipt_date: { type: GraphQLString }
     })
