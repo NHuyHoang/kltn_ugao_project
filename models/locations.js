@@ -6,6 +6,6 @@ export default new Schema({
         type: String,
         required: true,
     },
-    dest_lat: { type: Number },
-    dest_log: { type: Number },
+    lat: { type: Number },
+    lng: { type: Number },
 });

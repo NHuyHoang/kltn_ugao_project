@@ -1,0 +1,260 @@
+[
+    {
+        "img":"http://gaosach58.vn/wp-content/uploads/2017/08/BotNem_NguBang-300x300.jpg",
+        "weight":60,
+        "price":19,
+        "name":"BỘT NÊM THIÊN NHIÊN NGƯU BÁNG"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2018/02/Gao-dan-toc-gao-ong-tung-gao-sach-58-gao-cha-doi-gao-xay-doi-gao-nguyen-cam-300x300.jpg",
+        "weight":5,
+        "price":125,
+        "name":"Gạo dân tộc – Gạo Ông Từng – Gạo Nguyên Cám"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logod22-300x300.jpg",
+        "weight":2,
+        "price":70,
+        "name":"Gạo dẻo hoa lúa"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/07/Hinh_1-300x300.jpg",
+        "weight":5,
+        "price":125,
+        "name":"Gạo giống Nhật - Sakura"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/07/tn-300x300.jpg",
+        "weight":2,
+        "price":51,
+        "name":"Gạo Hạt Ngọc Trời Tiên Nữ"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/07/gao-huong-ngoc-lan-5kg-gaosach58-300x300.jpg",
+        "weight":5,
+        "price":100,
+        "name":"Gạo Hương Ngọc Lan"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/07/Hinh_2-300x300.jpg",
+        "weight":5,
+        "price":150,
+        "name":"Gạo Lanny rice"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/GaoLut-300x300.jpg",
+        "weight":1,
+        "price":45,
+        "name":"Gạo lứt đỏ hữu cơ"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/07/gao-tam-xoan-huong-sua-5kg-300x300.jpg",
+        "weight":5,
+        "price":110,
+        "name":"Gạo Tám Xoan hương sữa"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/MiGaoLucDo_HuuCo_TanThuy_400g-1-300x300.jpg",
+        "weight":null,
+        "price":58,
+        "name":"Mì gạo lứt đỏ hữu cơ Tâm Thủy"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/MiGaoSach_QueTamThuy_SoNho-3-300x300.jpg",
+        "weight":0.4,
+        "price":30,
+        "name":"Mì gạo sạch quê Tâm Thủy - sợi to"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/MiGaoSach_QueTamThuy_SoNho400g-1-300x300.jpg",
+        "weight":0.4,
+        "price":30,
+        "name":"Mì gạo sạch quê Tâm Thủy - sợi nhỏ"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/atiso-3-300x300.jpg",
+        "weight":0.036,
+        "price":64,
+        "name":"Trà atiso hữu cơ - hộp 20 túi lọc"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/tra-xanh-huu-co-gaosach58-300x300.jpg",
+        "weight":0.05,
+        "price":64,
+        "name":"Trà xanh hữu cơ (túi giấyf)"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2017/08/TRA-DEN-1-300x300.jpg",
+        "weight":0.036,
+        "price":64,
+        "name":"Trà đen hữu cơ - 20 túi lọc"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logod5-300x300.jpg",
+        "weight":5,
+        "price":170,
+        "name":"Gạo dẻo Hoa Lúa"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logox22-300x300.jpg",
+        "weight":2,
+        "price":70,
+        "name":"Gạo thơm Hoa Lúa"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logox5-300x300.jpg",
+        "weight":5,
+        "price":170,
+        "name":"Gạo thơm Hoa Lúa"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/bac-dau-300x300.jpg",
+        "weight":5,
+        "price":136,
+        "name":"Gạo Hạt Ngọc Trời Bắc Đẩu"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/tn-300x300.jpg",
+        "weight":5,
+        "price":125,
+        "name":"Gạo Hạt Ngọc Trời Tiên Nữ"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/phuong-hoang-300x300.jpg",
+        "weight":5,
+        "price":118,
+        "name":"Gạo Hạt Ngọc Trời Phượng Hoàng"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/thienlong.jpg",
+        "weight":5,
+        "price":98,
+        "name":"Gạo Hạt Ngọc Trời Thiên Long"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/bach-duong-300x300.jpg",
+        "weight":5,
+        "price":93,
+        "name":"Gạo Hạt Ngọc Trời Bạch Dương"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/gao-mam-300x300.jpg",
+        "weight":0.5,
+        "price":35,
+        "name":"Gạo mầm Vibigaba"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/toi-den-3-300x300.jpg",
+        "weight":0.5,
+        "price":55,
+        "name":"Gạo mầm Vibigaba tỏi đen"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/gao-mam-gac-300x296.jpg",
+        "weight":0.5,
+        "price":36,
+        "name":"Nếp mầm Vibigaba gấc"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/gao-mam-300x300.jpg",
+        "weight":0.5,
+        "price":36,
+        "name":"Gạo mầm Vibigaba"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/nang-nga-300x300.jpg",
+        "weight":5,
+        "price":145,
+        "name":"Gạo thơm Nàng Nga"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/y-1-300x300.jpg",
+        "weight":2,
+        "price":35,
+        "name":"Gạo tấm sạch Nàng Yến"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/nang-yen-300x300.jpg",
+        "weight":5,
+        "price":153,
+        "name":"Gạo thơm Nàng Yến"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/nep-vua-lieu-300x300.jpg",
+        "weight":2,
+        "price":57,
+        "name":"Nếp đặc sản Vua Liêu"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/1-e1468394442658.jpg",
+        "weight":5,
+        "price":158,
+        "name":"Gạo cao cấp Nàng Mai"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/nang-dao-2-300x300.jpg",
+        "weight":5,
+        "price":155,
+        "name":"Gạo thơm Nàng Đào"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/nang-cuc-300x300.jpg",
+        "weight":5,
+        "price":104,
+        "name":"Gạo thơm Nàng Cúc"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/gao-mam-nghe-300x300.jpg",
+        "weight":1,
+        "price":70,
+        "name":"Gạo mầm Vibigaba nghệ"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logov22-300x300.jpg",
+        "weight":2,
+        "price":59,
+        "name":"Gạo Jasmine"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/logov5-300x300.jpg",
+        "weight":5,
+        "price":142.5,
+        "name":"Gạo Jasmine"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/gao-mam-1-300x300.jpg",
+        "weight":1,
+        "price":70,
+        "name":"Gạo mầm Vibigaba"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/06/hnt-so3-2-300x278.jpg",
+        "weight":10,
+        "price":231,
+        "name":"Gạo Hạt Ngọc Trời số 3"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/gaoHNT1_2-300x300.jpg",
+        "weight":10,
+        "price":169,
+        "name":"Gạo Hạt Ngọc Trời số 1"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/11/HatNgocTroi-So8-1-300x300.jpg",
+        "weight":10,
+        "price":155,
+        "name":"Gạo Hạt Ngọc Trời số 8"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/11/HatNgocTroi-So5-300x300.jpg",
+        "weight":10,
+        "price":175,
+        "name":"Gạo Hạt Ngọc Trời số 5"
+    },
+    {
+        "img":"gaosach58.vn/wp-content/uploads/2016/07/hnt-so2-293x300.jpg",
+        "weight":10,
+        "price":161,
+        "name":"Gạo Hạt Ngọc Trời số 2"
+    }
+]

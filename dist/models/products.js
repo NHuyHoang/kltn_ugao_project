@@ -17,7 +17,6 @@ var Schema = _mongoose2.default.Schema;
 
 var productsSchema = exports.productsSchema = new Schema({
     name: { type: String, required: true },
-    amount: { type: Number, required: true },
     type: { type: String, required: true },
     description: { type: String },
     img: { type: String, required: true },

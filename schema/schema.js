@@ -27,8 +27,8 @@ export const LocationType = new GraphQLObjectType({
     name: 'Location',
     fields: () => ({
         address: { type: GraphQLString },
-        dest_lat: { type: GraphQLFloat },
-        dest_log: { type: GraphQLFloat }
+        lat: { type: GraphQLFloat },
+        lng: { type: GraphQLFloat }
     })
 })
 
@@ -45,7 +45,6 @@ export const InvoiceType = new GraphQLObjectType({
     fields: () => ({
         _id: { type: GraphQLString },
         order_date: { type: GraphQLString },
-        amount: { type: GraphQLString },
         paid: { type: GraphQLBoolean },
         price: { type: GraphQLInt },
         payment_method: { type: GraphQLString },
@@ -130,8 +129,8 @@ export const ProductType = new GraphQLObjectType({
         img: { type: GraphQLString },
         description: { type: GraphQLString },
         info: { type: GraphQLString },
-        price: { type: GraphQLInt },
-        weight: { type: GraphQLInt },
+        price: { type: GraphQLFloat },
+        weight: { type: GraphQLFloat },
         producer: {
             type: ProducerType,
             resolve(parentValue, args) {
@@ -150,9 +149,9 @@ export const ProducerType = new GraphQLObjectType({
         phone: { type: GraphQLString },
         email: { type: GraphQLString },
         description: { type: GraphQLString },
-        img: { type: GraphQLList(GraphQLString) },
+        img:{ type: GraphQLString },
         products: {
-            type: GraphQLList(ProducerType),
+            type: GraphQLList(ProductType),
             resolve(parentValue, args) {
                 return services.producersService.findProducts(parentValue._id);
             }
@@ -196,6 +195,7 @@ export const ownerType = new GraphQLObjectType({
         name: { type: GraphQLString },
         pass: { type: GraphQLString },
         phone: { type: GraphQLString },
+        token: { type: GraphQLString },
     })
 });
 

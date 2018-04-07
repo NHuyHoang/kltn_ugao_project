@@ -15,6 +15,9 @@ export const ownersSchema = new Schema({
 		type: String, 
 		required: [true, 'pass is required']
 	},
+	token: {
+		type: String, 
+	},
     phone:{
         type:String,
         required:true,
