@@ -58,4 +58,13 @@ Object.defineProperty(exports, 'producersService', {
   }
 });
 
+var _stores = require('./stores.service');
+
+Object.defineProperty(exports, 'storesService', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_stores).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

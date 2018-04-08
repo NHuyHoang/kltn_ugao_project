@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _mongoose = require('mongoose');
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
 var _models = require('../models');
 
 var _lodash = require('lodash');
@@ -40,7 +36,7 @@ exports.default = {
 
 
 var _findOne = function _findOne(id) {
-    return _models.Invoices.findOne({ _id: id });s;
+    return _models.Invoices.findOne({ _id: id });
 };
 
 var _findMany = function _findMany(ids) {

@@ -20,7 +20,7 @@ exports.default = {
     findOne: function findOne(id) {
         return _findOne(id);
     },
-    findAll: function findAll(id) {
+    findAll: function findAll() {
         return _models.Producers.find();
     },
     findMany: function findMany(ids) {

@@ -1,9 +1,9 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
-exports.Tasks = exports.tasksSchema = undefined;
+exports.ownersSchema = undefined;
 
 var _mongoose = require('mongoose');
 
@@ -17,10 +17,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Schema = _mongoose2.default.Schema;
 
-var tasksSchema = exports.tasksSchema = new Schema({
-    address: { type: String },
-    receipt_date: { type: Date, required: true },
-    location: _locations2.default
+var ownersSchema = exports.ownersSchema = new Schema({
+	email: {
+		type: String,
+		required: [true, 'email is required']
+	},
+	name: {
+		type: String,
+		required: [true, 'name is required']
+	},
+	pass: {
+		type: String,
+		required: [true, 'pass is required']
+	},
+	token: {
+		type: String
+	},
+	phone: {
+		type: String,
+		required: true
+	}
 });
-
-var Tasks = exports.Tasks = _mongoose2.default.model('Tasks', tasksSchema);

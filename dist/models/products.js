@@ -17,12 +17,12 @@ var Schema = _mongoose2.default.Schema;
 
 var productsSchema = exports.productsSchema = new Schema({
     name: { type: String, required: true },
-    type: { type: String, required: true },
+    type: { type: String },
     description: { type: String },
+    info: { type: String },
+    weight: { type: Number },
     img: { type: String, required: true },
-    rating: { type: Number, default: 0 },
-    price: { type: Number, required: true },
-    reviews: [_reviews.reviewsSchema]
+    price: { type: Number, required: true }
 });
 
 var Products = exports.Products = _mongoose2.default.model('Products', productsSchema);

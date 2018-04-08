@@ -16,12 +16,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Schema = _mongoose2.default.Schema;
 
 var invoiceSchema = exports.invoiceSchema = new Schema({
-    date_order: { type: Date, required: true },
-    amount: { type: Number, required: true },
+    order_date: { type: Date, required: true },
     paid: { type: Boolean, default: false },
     price: { type: Number, required: true },
     payment_method: { type: String },
-    productId: [Schema.Types.ObjectId],
+    products: [Schema.Types.Mixed],
     tasks: _tasks.tasksSchema
 });
 

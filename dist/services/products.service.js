@@ -26,8 +26,23 @@ exports.default = {
         return _models.Invoices.findOne(invoice_id).catch(function (err) {
             return err;
         }).then(function (invoice) {
-            if (invoice.productId.length === 0) return [];
-            return _findMany(invoice.productId);
+            if (invoice.products.length === 0) return [];
+            var result = [];
+            var promiseArr = [];
+            invoice.products.forEach(function (product) {
+                promiseArr.push(_findOne(product._id));
+            });
+            return Promise.all(promiseArr).then(function (values) {
+                var result = [];
+                values.forEach(function (value, i) {
+                    var resultItem = {
+                        product: Object.assign({}, value._doc),
+                        quantity: invoice.products[i].quantity
+                    };
+                    result.push(resultItem);
+                });
+                return result;
+            });
         });
     },
     findProductByReviewId: function findProductByReviewId(reviewId) {

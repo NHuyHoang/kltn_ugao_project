@@ -80,9 +80,10 @@ export const ShipperType = new GraphQLObjectType({
     name: 'Shipper',
     fields: () => ({
         _id: { type: GraphQLString },
+        token:{ type: GraphQLString },
         name: { type: GraphQLString },
         phone: { type: GraphQLString },
-        address: { type: GraphQLBoolean },
+        address: { type: GraphQLString },
         email: { type: GraphQLString },
         pass: { type: GraphQLString },
         img: { type: GraphQLString },

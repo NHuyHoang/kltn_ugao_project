@@ -19,7 +19,7 @@ var producersSchema = exports.producersSchema = new Schema({
     phone: { type: String },
     email: { type: String, required: true },
     description: { type: String },
-    img: [String],
+    img: { type: String },
     productId: [String]
 });
 

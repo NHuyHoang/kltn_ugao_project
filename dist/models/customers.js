@@ -9,6 +9,10 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
+var _locations = require('./locations');
+
+var _locations2 = _interopRequireDefault(_locations);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Schema = _mongoose2.default.Schema;
@@ -31,7 +35,8 @@ var customersSchema = exports.customersSchema = new Schema({
 		type: String,
 		required: true
 	},
-	address: String,
+	token: String,
+	location: _locations2.default,
 	invoiceId: [String]
 });
 

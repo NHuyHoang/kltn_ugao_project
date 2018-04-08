@@ -15,6 +15,7 @@ var Schema = _mongoose2.default.Schema;
 
 var shippersSchema = exports.shippersSchema = new Schema({
     name: { type: String, required: true },
+    token: { type: String },
     phone: { type: String, required: true },
     address: { type: String },
     email: { type: String, required: true },

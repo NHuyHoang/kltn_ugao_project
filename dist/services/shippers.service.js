@@ -19,6 +19,9 @@ exports.default = {
     findAll: function findAll(id) {
         return _models.Shippers.find();
     },
+    findMany: function findMany(ids) {
+        return _models.Shippers.find({ _id: { $in: ids } });
+    },
     findShipperByInvoiceId: function findShipperByInvoiceId(invoice_Id) {
         return _models.Shippers.findOne({ invoiceId: invoice_Id });
     }

@@ -5,14 +5,15 @@ import expressGraphQL from 'express-graphql'
 
 import router from './routes/root.route';
 import config from './config';
-import schema from './schema/grapql.schema'
+import schema from './schema/grapql.schema';
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.local_db_uri)
+mongoose.connect(config.db_uri)
     .then((err, client) => {
-        console.log('Connected to db at ', config.local_db_uri);
+        console.log('Connected to db at ', config.db_uri);
         return mongoose.connection;
     })
     .catch(err => {
@@ -29,7 +30,9 @@ app.use('/graphql', expressGraphQL({
     graphiql: true
 }))
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log('listening on port 8000');
 });
 
+/* import customers from './seeding/customer';
+customers();  */

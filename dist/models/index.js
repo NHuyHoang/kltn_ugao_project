@@ -108,3 +108,27 @@ Object.defineProperty(exports, 'Tasks', {
     return _tasks.Tasks;
   }
 });
+
+var _stores = require('./stores');
+
+Object.defineProperty(exports, 'storesSchema', {
+  enumerable: true,
+  get: function get() {
+    return _stores.storesSchema;
+  }
+});
+Object.defineProperty(exports, 'Stores', {
+  enumerable: true,
+  get: function get() {
+    return _stores.Stores;
+  }
+});
+
+var _owners = require('./owners');
+
+Object.defineProperty(exports, 'ownersSchema', {
+  enumerable: true,
+  get: function get() {
+    return _owners.ownersSchema;
+  }
+});
