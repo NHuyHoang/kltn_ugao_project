@@ -7,9 +7,9 @@ import router from './routes/root.route';
 import config from './config';
 import schema from './schema/grapql.schema';
 const PORT = process.env.PORT || 8000;
-
 const app = express();
 
+//fixing deploy
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db_uri)
     .then((err, client) => {
