@@ -31,7 +31,7 @@ app.use('/graphql', expressGraphQL({
     graphiql: true
 }))
 
-app.listen(PORT, () => {
+app.listen(8000, () => {
     console.log('listening on port 8000');
 });
 

@@ -31,9 +31,10 @@ var _grapql2 = _interopRequireDefault(_grapql);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PORT = process.env.PORT || 8000;
-
 var app = (0, _express2.default)();
 
+//fixing deploy
+//update heroku please
 _mongoose2.default.Promise = global.Promise;
 _mongoose2.default.connect(_config2.default.db_uri).then(function (err, client) {
     console.log('Connected to db at ', _config2.default.db_uri);

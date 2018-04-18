@@ -18,7 +18,7 @@ var rootRouter = _express2.default.Router();
 
 rootRouter.use('/customers/', _customers2.default);
 rootRouter.get("", function (req, res) {
-  return res.send("Home page");
+  return res.send("graphql link: https://gentle-dawn-11577.herokuapp.com/graphql");
 });
 
 exports.default = rootRouter;
