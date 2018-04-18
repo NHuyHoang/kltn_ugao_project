@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 
 //fixing deploy
+//update heroku please
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db_uri)
     .then((err, client) => {
