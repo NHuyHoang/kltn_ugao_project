@@ -34,7 +34,7 @@ const RootQuery = new GraphQLObjectType({
             type: Type.InvoiceType,
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
-                return invoicesService.findOne(args.id)
+                return services.invoicesService.findOne(args.id)
             }
         },
         invoices: {
@@ -47,7 +47,7 @@ const RootQuery = new GraphQLObjectType({
             type: Type.ShipperType,
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
-                return shippersService.findOne(args.id)
+                return services.shippersService.findOne(args.id)
             }
         },
         shippers: {
@@ -60,7 +60,7 @@ const RootQuery = new GraphQLObjectType({
             type: Type.ProductType,
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
-                return productsService.findOne(args.id)
+                return services.productsService.findOne(args.id)
             }
         },
         products: {
