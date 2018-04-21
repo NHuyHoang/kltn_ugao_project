@@ -53,8 +53,8 @@ app.use('/graphql', (0, _expressGraphql2.default)({
     graphiql: true
 }));
 
-app.listen(8000, function () {
-    console.log('listening on port 8000');
+app.listen(PORT, function () {
+    console.log('listening on port ', PORT);
 });
 
 /* import customers from './seeding/customer';
