@@ -46,6 +46,16 @@ var RootQuery = new GraphQLObjectType({
                 return services.customersService.findAll();
             }
         },
+        authenticateCustomer: {
+            type: Type.CustomerType,
+            args: {
+                email: { type: GraphQLString },
+                pass: { type: GraphQLString }
+            },
+            resolve: function resolve(parentValue, args) {
+                return services.customersService.findByEmailPass(args.email, args.pass);
+            }
+        },
         invoice: {
             type: Type.InvoiceType,
             args: { id: { type: GraphQLString } },

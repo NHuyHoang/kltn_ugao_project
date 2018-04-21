@@ -37,3 +37,19 @@ app.listen(8000, () => {
 
 /* import customers from './seeding/customer';
 customers();  */
+
+/* import bcrypt from 'bcryptjs';
+
+var hash =  bcrypt.hashSync('huyhoang3562927', 10);
+
+console.log(hash);
+
+bcrypt.compare('huyhoang3562927', hash).then((res) => {
+    console.log(res)
+}); */
+
+/* import { customersService } from './services';
+customersService.findByEmailPass('bluegasus@gmail.com', 'huyhoang3562927')
+    .then(result => console.log(result))
+    .catch(result => console.log(result))
+ */

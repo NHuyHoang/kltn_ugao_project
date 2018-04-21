@@ -31,6 +31,15 @@ exports.default = {
     findOne: function findOne(id) {
         return _models.Customers.findOne({ _id: id });
     },
+    findByEmailPass: function findByEmailPass(email, pass) {
+        return _models.Customers.findOne({ email: email }).lean().then(function (customer) {
+            return _bcryptjs2.default.compare(pass, customer.pass).then(function (res) {
+                if (res) return _lodash2.default.omit(customer, ['pass']);else return null;
+            });
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    },
     findCustomerByInvoiceId: function findCustomerByInvoiceId(invoice_Id) {
         return _models.Customers.findOne({ invoiceId: invoice_Id });
     },
