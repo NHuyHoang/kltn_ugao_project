@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.storageItemType = exports.ownerType = exports.StoreType = exports.ProducerType = exports.ProductType = exports.CustomerType = exports.ShipperType = exports.InvoiceType = exports.InvoiceProductType = exports.LocationType = exports.TaskType = undefined;
+exports.storageItemType = exports.OwnerType = exports.StoreType = exports.ProducerType = exports.ProductType = exports.CustomerType = exports.ShipperType = exports.InvoiceType = exports.InvoiceProductType = exports.LocationType = exports.TaskType = undefined;
 
 var _services = require('../services');
 
@@ -195,7 +195,7 @@ var StoreType = exports.StoreType = new GraphQLObjectType({
                     return services.storesService.findInvoices(parentValue._id);
                 }
             },
-            owner: { type: ownerType },
+            owner: { type: OwnerType },
             storage: {
                 type: GraphQLList(storageItemType),
                 resolve: function resolve(parentValue, args) {
@@ -212,7 +212,7 @@ var StoreType = exports.StoreType = new GraphQLObjectType({
     }
 });
 
-var ownerType = exports.ownerType = new GraphQLObjectType({
+var OwnerType = exports.OwnerType = new GraphQLObjectType({
     name: 'Owner',
     fields: function fields() {
         return {

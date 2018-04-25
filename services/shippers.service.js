@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import { Shippers } from '../models';
+import bcrypt from 'bcryptjs';
+import _ from 'lodash';
+
 
 export default {
     findOne: (id) => {
@@ -13,6 +16,17 @@ export default {
     },
     findShipperByInvoiceId: (invoice_Id) => {
         return Shippers.findOne({ invoiceId: invoice_Id })
+    },
+    findByEmailPass: (email, pass) => {
+        return Shippers.findOne({ email })
+            .lean()
+            .then(shipper => {
+                return bcrypt.compare(pass, shipper.pass).then((res) => {
+                    if (res) return _.omit(shipper, ['pass']);
+                    else return null;
+                });
+            })
+            .catch(err => console.log(err))
     },
 }
 

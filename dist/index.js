@@ -62,14 +62,39 @@ customers();  */
 
 /* import bcrypt from 'bcryptjs';
 
-var hash =  bcrypt.hashSync('huyhoang3562927', 10);
+var hash = bcrypt.hashSync('kltnugao', 10);
 
 console.log(hash);
 
-bcrypt.compare('huyhoang3562927', hash).then((res) => {
+
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);
+var hash = bcrypt.hashSync('kltnugao', 10);
+
+console.log(hash);*/
+
+/* bcrypt.compare('kltnugao', "$2a$10$SoTEHnUCdIu0awzoTXOXw.DsI6ww.Gcu2SRbhz9H8fWuwgyoD0dG6").then((res) => {
     console.log(res)
 }); */
-
 /* import { customersService } from './services';
 customersService.findByEmailPass('bluegasus@gmail.com', 'huyhoang3562927')
     .then(result => console.log(result))

@@ -46,7 +46,7 @@ var RootQuery = new GraphQLObjectType({
                 return services.customersService.findAll();
             }
         },
-        authenticateCustomer: {
+        authenticatedCustomer: {
             type: Type.CustomerType,
             args: {
                 email: { type: GraphQLString },
@@ -74,6 +74,16 @@ var RootQuery = new GraphQLObjectType({
             args: { id: { type: GraphQLString } },
             resolve: function resolve(parentValue, args) {
                 return services.shippersService.findOne(args.id);
+            }
+        },
+        authenticatedShipper: {
+            type: Type.ShipperType,
+            args: {
+                email: { type: GraphQLString },
+                pass: { type: GraphQLString }
+            },
+            resolve: function resolve(parentValue, args) {
+                return services.shippersService.findByEmailPass(args.email, args.pass);
             }
         },
         shippers: {
@@ -119,6 +129,16 @@ var RootQuery = new GraphQLObjectType({
             type: GraphQLList(Type.StoreType),
             resolve: function resolve(parentValue, args) {
                 return services.storesService.findAll();
+            }
+        },
+        authenticatedOwner: {
+            type: Type.OwnerType,
+            args: {
+                email: { type: GraphQLString },
+                pass: { type: GraphQLString }
+            },
+            resolve: function resolve(parentValue, args) {
+                return services.storesService.findOwner(args.email, args.pass);
             }
         }
     }

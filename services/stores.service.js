@@ -1,5 +1,8 @@
 import { Stores } from '../models';
-import { invoicesService, shippersService, productsService } from '../services'
+import { invoicesService, ownersService, productsService } from '../services';
+import bcrypt from 'bcryptjs';
+import _ from 'lodash';
+
 export default {
     findOne: (id) => {
         return findOne(id);
@@ -13,10 +16,10 @@ export default {
                 return invoicesService.findMany(store.invoiceId)
             })
     },
-    findShippers: (id) => {
+    findowners: (id) => {
         return findOne(id)
             .then(store => {
-                return shippersService.findMany(store.shipperId)
+                return ownersService.findMany(store.ownerId)
             })
     },
     findByInvoiceId: (id) => {
@@ -44,6 +47,18 @@ export default {
                         return result
                     })
             })
+    },
+    findOwner: (email, pass) => {
+        return Stores.findOne({ "owner.email": email })
+            .lean()
+            .then(store => store.owner)
+            .then(owner => {
+                return bcrypt.compare(pass, owner.pass).then((res) => {
+                    if (res) return _.omit(owner, ['pass']);
+                    else return null;
+                });
+            })
+            .catch(err => console.log(err))
     }
 }
 

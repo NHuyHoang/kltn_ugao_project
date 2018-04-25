@@ -172,7 +172,7 @@ export const StoreType = new GraphQLObjectType({
                 return services.storesService.findInvoices(parentValue._id)
             }
         },
-        owner: { type: ownerType },
+        owner: { type: OwnerType },
         storage: { 
             type: GraphQLList(storageItemType),
             resolve(parentValue, args) {
@@ -188,7 +188,7 @@ export const StoreType = new GraphQLObjectType({
     })
 })
 
-export const ownerType = new GraphQLObjectType({
+export const OwnerType = new GraphQLObjectType({
     name: 'Owner',
     fields: () => ({
         _id: { type: GraphQLString },
