@@ -69,7 +69,13 @@ exports.default = {
         }).catch(function (err) {
             return console.log(err);
         });
+    },
+    findShippers: function findShippers(id) {
+        return _findOne(id).then(function (store) {
+            return _services.shippersService.findMany(store.shipperId);
+        });
     }
+
 };
 
 

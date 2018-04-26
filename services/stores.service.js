@@ -1,5 +1,5 @@
 import { Stores } from '../models';
-import { invoicesService, ownersService, productsService } from '../services';
+import { invoicesService, ownersService, productsService, shippersService } from '../services';
 import bcrypt from 'bcryptjs';
 import _ from 'lodash';
 
@@ -59,7 +59,14 @@ export default {
                 });
             })
             .catch(err => console.log(err))
+    },
+    findShippers: (id) => {
+        return findOne(id)
+            .then(store => {
+                return shippersService.findMany(store.shipperId);
+            })
     }
+
 }
 
 const findOne = (id) => {
