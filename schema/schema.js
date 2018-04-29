@@ -69,7 +69,7 @@ export const InvoiceType = new GraphQLObjectType({
         },
         store: {
             type: StoreType,
-            resolve(parentValue, args){
+            resolve(parentValue, args) {
                 return services.storesService.findByInvoiceId(parentValue._id)
             }
         }
@@ -80,7 +80,7 @@ export const ShipperType = new GraphQLObjectType({
     name: 'Shipper',
     fields: () => ({
         _id: { type: GraphQLString },
-        token:{ type: GraphQLString },
+        token: { type: GraphQLString },
         name: { type: GraphQLString },
         phone: { type: GraphQLString },
         address: { type: GraphQLString },
@@ -150,7 +150,7 @@ export const ProducerType = new GraphQLObjectType({
         phone: { type: GraphQLString },
         email: { type: GraphQLString },
         description: { type: GraphQLString },
-        img:{ type: GraphQLString },
+        img: { type: GraphQLString },
         products: {
             type: GraphQLList(ProductType),
             resolve(parentValue, args) {
@@ -173,7 +173,7 @@ export const StoreType = new GraphQLObjectType({
             }
         },
         owner: { type: OwnerType },
-        storage: { 
+        storage: {
             type: GraphQLList(storageItemType),
             resolve(parentValue, args) {
                 return services.storesService.findProduct(parentValue._id)
@@ -197,6 +197,7 @@ export const OwnerType = new GraphQLObjectType({
         pass: { type: GraphQLString },
         phone: { type: GraphQLString },
         token: { type: GraphQLString },
+        img: { type: GraphQLString }
     })
 });
 

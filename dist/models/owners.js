@@ -22,6 +22,7 @@ var ownersSchema = exports.ownersSchema = new Schema({
 		type: String,
 		required: [true, 'email is required']
 	},
+	img: String,
 	name: {
 		type: String,
 		required: [true, 'name is required']

@@ -221,7 +221,8 @@ var OwnerType = exports.OwnerType = new GraphQLObjectType({
             name: { type: GraphQLString },
             pass: { type: GraphQLString },
             phone: { type: GraphQLString },
-            token: { type: GraphQLString }
+            token: { type: GraphQLString },
+            img: { type: GraphQLString }
         };
     }
 });
