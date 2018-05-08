@@ -1,4 +1,4 @@
-import { Invoices, Customers, Shippers } from '../models';
+import { Invoices, Customers, Shippers, Stores } from '../models';
 import _ from 'lodash';
 
 export default {
@@ -13,7 +13,7 @@ export default {
     },
     findUserInvoices: (userId, modelName) => {
         let model;
-        if(modelName === 'Customers')
+        if (modelName === 'Customers')
             model = Customers
         else
             model = Shippers
@@ -22,6 +22,23 @@ export default {
             .then(user => {
                 const invoicesCount = user.invoiceId.length;
                 return findMany(user.invoiceId);
+            });
+    },
+    insertOne: (invoice, customer_id, store_id) => {
+        return Invoices.create(invoice)
+            .then(result => {
+                let storePromise = Stores.update(
+                    { _id: store_id },
+                    { $push: { invoiceId: result._id } }
+                )
+                let customerPromise = Customers.update(
+                    { _id: customer_id },
+                    { $push: { invoiceId: result._id } }
+                )
+                return Promise.all([storePromise, customerPromise])
+                    .then(value => {
+                        return { _id: result._id };
+                    })
             });
     }
 }
@@ -32,5 +49,5 @@ const findOne = (id) => {
 
 const findMany = (ids) => {
     if (ids.length === 0) return [];
-    return  Invoices.find({ _id: { $in: ids } })
+    return Invoices.find({ _id: { $in: ids } })
 }

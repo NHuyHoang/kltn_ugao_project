@@ -10,9 +10,15 @@ var _services = require('../services');
 
 var services = _interopRequireWildcard(_services);
 
+var _graphqlTypeJson = require('graphql-type-json');
+
+var _graphqlTypeJson2 = _interopRequireDefault(_graphqlTypeJson);
+
 var _schema = require('./schema');
 
 var Type = _interopRequireWildcard(_schema);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -159,6 +165,17 @@ var mutation = new GraphQLObjectType({
             resolve: function resolve(parentValue, args) {
                 console.log(args);
                 return services.customersService.insert(Object.assign({}, args));
+            }
+        },
+        addInvoice: {
+            type: _graphqlTypeJson2.default,
+            args: {
+                invoice: { type: GraphQLNonNull(_graphqlTypeJson2.default) },
+                customerId: { type: GraphQLNonNull(GraphQLString) },
+                storeId: { type: GraphQLNonNull(GraphQLString) }
+            },
+            resolve: function resolve(parentValue, args) {
+                return services.invoicesService.insertOne(args.invoice, args.customerId, args.storeId);
             }
         }
     }

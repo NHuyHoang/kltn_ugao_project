@@ -1,5 +1,6 @@
 const graphql = require('graphql');
-import * as services from '../services'
+import * as services from '../services';
+import GraphQLJSON from 'graphql-type-json';
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -150,6 +151,17 @@ const mutation = new GraphQLObjectType({
                 return services.customersService.insert(Object.assign({}, args))
             }
 
+        },
+        addInvoice: {
+            type: GraphQLJSON,
+            args: {
+                invoice: { type: GraphQLNonNull(GraphQLJSON) },
+                customerId: { type: GraphQLNonNull(GraphQLString) },
+                storeId: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parentValue, args) {
+                return services.invoicesService.insertOne(args.invoice, args.customerId, args.storeId);
+            }
         }
     }
 })
