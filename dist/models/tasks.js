@@ -19,7 +19,7 @@ var Schema = _mongoose2.default.Schema;
 
 var tasksSchema = exports.tasksSchema = new Schema({
     address: { type: String },
-    receipt_date: { type: Date, required: true },
+    receipt_date: { type: Date },
     location: _locations2.default
 });
 
