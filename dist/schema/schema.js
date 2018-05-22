@@ -62,7 +62,7 @@ var InvoiceType = exports.InvoiceType = new GraphQLObjectType({
             _id: { type: GraphQLString },
             order_date: { type: GraphQLString },
             paid: { type: GraphQLBoolean },
-            price: { type: GraphQLInt },
+            price: { type: GraphQLFloat },
             payment_method: { type: GraphQLString },
             tasks: { type: TaskType },
             products: {
