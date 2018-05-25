@@ -162,6 +162,15 @@ const mutation = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return services.invoicesService.insertOne(args.invoice, args.customerId, args.storeId);
             }
+        },
+        updateCustomer:{
+            type: GraphQLJSON,
+            args:{
+                updateInfo: {type:GraphQLNonNull(GraphQLJSON)},
+            },
+            resolve(parentValue,args){
+                return services.customersService.update(args.updateInfo);
+            }
         }
     }
 })

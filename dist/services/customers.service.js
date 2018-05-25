@@ -50,11 +50,11 @@ exports.default = {
     },
     update: function update(obj) {
         return new Promise(function (resolve, reject) {
-            if (!obj.id) reject("id is required for update");
-            return _models.Customers.findOneAndUpdate({ _id: obj.id }, _lodash2.default.omit(obj, ['id'])).then(function (data) {
-                return resolve(data);
+            if (!obj._id) reject("id is required for update");
+            return _models.Customers.findOneAndUpdate({ _id: obj._id }, _lodash2.default.omit(obj, ['_id'])).then(function (data) {
+                return resolve({ success: true });
             }).catch(function (err) {
-                return reject(err);
+                return reject({ success: false });
             });
         });
     },

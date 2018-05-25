@@ -32,11 +32,11 @@ export default {
     },
     update: (obj) => {
         return new Promise((resolve, reject) => {
-            if (!obj.id) reject("id is required for update");
+            if (!obj._id) reject("id is required for update");
             return Customers
-                .findOneAndUpdate({ _id: obj.id }, _.omit(obj, ['id']))
-                .then(data => resolve(data))
-                .catch(err => reject(err))
+                .findOneAndUpdate({ _id: obj._id }, _.omit(obj, ['_id']))
+                .then(data => resolve({ success: true }))
+                .catch(err => reject({ success: false }))
         })
     },
     remove: (id) => {

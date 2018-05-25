@@ -35,20 +35,8 @@ app.listen(PORT, () => {
     console.log('listening on port ', PORT);
 });
 
-/* import { invoicesService } from './services';
+/*  import { customersService } from './services';
 
-invoicesService.insertOne({
-    order_date: new Date(),
-    paid: true,
-    price: 111,
-    products: {
-        product: {
-            name: '1',
-            _id: 1
-        },
-        quantity: 2
-    },
-    tasks: null
-},"5ac98125ce697734441d520e","5ac8d41fd9552734e8148e1f").then(
-    data => console.log(data)
-).catch(err => console.log(err)) */
+customersService.update({_id:"5adb234ddb92782858261962" ,name:"Huy Hoang"})
+    .then(result => console.log(result))
+    .catch(err => console.log(err)) */

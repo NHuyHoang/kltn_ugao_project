@@ -177,6 +177,15 @@ var mutation = new GraphQLObjectType({
             resolve: function resolve(parentValue, args) {
                 return services.invoicesService.insertOne(args.invoice, args.customerId, args.storeId);
             }
+        },
+        updateCustomer: {
+            type: _graphqlTypeJson2.default,
+            args: {
+                updateInfo: { type: GraphQLNonNull(_graphqlTypeJson2.default) }
+            },
+            resolve: function resolve(parentValue, args) {
+                return services.customersService.update(args.updateInfo);
+            }
         }
     }
 });
