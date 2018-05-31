@@ -35,8 +35,8 @@ app.listen(PORT, () => {
     console.log('listening on port ', PORT);
 });
 
-/*  import { customersService } from './services';
+/*   import { storesService } from './services';
 
-customersService.update({_id:"5adb234ddb92782858261962" ,name:"Huy Hoang"})
+  storesService.findByOwnerId("5ac8d41fd9552734e8148e1b")
     .then(result => console.log(result))
     .catch(err => console.log(err)) */

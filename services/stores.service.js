@@ -60,6 +60,12 @@ export default {
             })
             .catch(err => console.log(err))
     },
+    findByOwnerId: (id) => {
+        return Stores.findOne({ "owner._id": id })
+            .lean()
+            .then(store => _.omit(store,['owner']))
+            .catch(err => console.log(err))
+    },
     findShippers: (id) => {
         return findOne(id)
             .then(store => {

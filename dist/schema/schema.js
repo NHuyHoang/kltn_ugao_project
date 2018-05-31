@@ -228,7 +228,13 @@ var OwnerType = exports.OwnerType = new GraphQLObjectType({
             pass: { type: GraphQLString },
             phone: { type: GraphQLString },
             token: { type: GraphQLString },
-            img: { type: GraphQLString }
+            img: { type: GraphQLString },
+            store: {
+                type: StoreType,
+                resolve: function resolve(parentValue, args) {
+                    return services.storesService.findByOwnerId(parentValue._id);
+                }
+            }
         };
     }
 });

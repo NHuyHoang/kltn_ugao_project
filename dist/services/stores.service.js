@@ -70,6 +70,13 @@ exports.default = {
             return console.log(err);
         });
     },
+    findByOwnerId: function findByOwnerId(id) {
+        return _models.Stores.findOne({ "owner._id": id }).lean().then(function (store) {
+            return _lodash2.default.omit(store, ['owner']);
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    },
     findShippers: function findShippers(id) {
         return _findOne(id).then(function (store) {
             return _services.shippersService.findMany(store.shipperId);
