@@ -22,14 +22,14 @@ exports.default = {
     findOne: function findOne(id) {
         return _findOne(id);
     },
-    findUserInvoices: function findUserInvoices(userId, modelName) {
+    findUserInvoices: function findUserInvoices(userId, modelName, getUnPaidInvoices) {
         var model = void 0;
         if (modelName === 'Customers') model = _models.Customers;else model = _models.Shippers;
         return model.findOne({ _id: userId }).catch(function (err) {
             return err;
         }).then(function (user) {
             var invoicesCount = user.invoiceId.length;
-            return _findMany(user.invoiceId);
+            if (getUnPaidInvoices === undefined) return _findMany(user.invoiceId);else return _findMany(user.invoiceId, true);
         });
     },
     insertOne: function insertOne(invoice, customer_id, store_id) {
@@ -48,7 +48,9 @@ var _findOne = function _findOne(id) {
     return _models.Invoices.findOne({ _id: id });
 };
 
-var _findMany = function _findMany(ids) {
+var _findMany = function _findMany(ids, unPaidInvoices) {
     if (ids.length === 0) return [];
-    return _models.Invoices.find({ _id: { $in: ids } });
+    if (unPaidInvoices === undefined) return _models.Invoices.find({ _id: { $in: ids } }).sort({ order_date: -1 });else {
+        return _models.Invoices.find({ _id: { $in: ids }, paid: false }).sort({ order_date: -1 });
+    }
 };

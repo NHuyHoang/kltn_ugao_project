@@ -110,6 +110,12 @@ var ShipperType = exports.ShipperType = new GraphQLObjectType({
                 resolve: function resolve(parentValue, args) {
                     return services.invoicesService.findUserInvoices(parentValue._id, 'Shippers');
                 }
+            },
+            unPaidInvoices: {
+                type: new GraphQLList(InvoiceType),
+                resolve: function resolve(parentValue, args) {
+                    return services.invoicesService.findUserInvoices(parentValue._id, 'Shippers', true);
+                }
             }
         };
     }

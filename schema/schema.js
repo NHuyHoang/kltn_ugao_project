@@ -92,6 +92,12 @@ export const ShipperType = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return services.invoicesService.findUserInvoices(parentValue._id, 'Shippers')
             }
+        },
+        unPaidInvoices: {
+            type: new GraphQLList(InvoiceType),
+            resolve(parentValue, args) {
+                return services.invoicesService.findUserInvoices(parentValue._id, 'Shippers',true)
+            }
         }
     })
 });

@@ -11,7 +11,7 @@ export default {
     findOne: (id) => {
         return findOne(id);
     },
-    findUserInvoices: (userId, modelName) => {
+    findUserInvoices: (userId, modelName, getUnPaidInvoices) => {
         let model;
         if (modelName === 'Customers')
             model = Customers
@@ -21,7 +21,10 @@ export default {
             .catch(err => err)
             .then(user => {
                 const invoicesCount = user.invoiceId.length;
-                return findMany(user.invoiceId);
+                if (getUnPaidInvoices === undefined)
+                    return findMany(user.invoiceId);
+                else
+                    return findMany(user.invoiceId, true);
             });
     },
     insertOne: (invoice, customer_id, store_id) => {
@@ -47,7 +50,12 @@ const findOne = (id) => {
     return Invoices.findOne({ _id: id });
 }
 
-const findMany = (ids) => {
+const findMany = (ids, unPaidInvoices) => {
     if (ids.length === 0) return [];
-    return Invoices.find({ _id: { $in: ids } })
+    if (unPaidInvoices === undefined)
+        return Invoices.find({ _id: { $in: ids } }).sort({ order_date: -1 })
+    else {
+        return Invoices.find({ _id: { $in: ids }, paid: false }).sort({ order_date: -1 })
+    }
+
 }
