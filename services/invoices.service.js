@@ -1,4 +1,5 @@
 import { Invoices, Customers, Shippers, Stores } from '../models';
+import FCMService from './firebaseAdmin.services';
 import _ from 'lodash';
 
 export default {
@@ -28,6 +29,7 @@ export default {
             });
     },
     insertOne: (invoice, customer_id, store_id) => {
+        FCMService();
         return Invoices.create(invoice)
             .then(result => {
                 let storePromise = Stores.update(
