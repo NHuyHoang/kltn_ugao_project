@@ -31,17 +31,18 @@ export default {
     insertOne: (invoice, customer_id, store_id) => {
         return Invoices.create(invoice)
             .then(result => {
+                console.log(result);
                 let storePromise = Stores.update(
                     { _id: store_id },
                     { $push: { invoiceId: result._id } }
-                )
+                ).catch(err => console.log(err));
                 let customerPromise = Customers.update(
                     { _id: customer_id },
                     { $push: { invoiceId: result._id } }
-                )
+                ).catch(err => console.log(err));
                 return Promise.all([storePromise, customerPromise])
                     .then(value => {
-                        FCMService({ invoiceId: result._id });
+                        FCMService({ invoiceId: (result._id).toString() });
                         return { _id: result._id };
                     })
             });
