@@ -28,6 +28,9 @@ export default {
             })
             .catch(err => console.log(err))
     },
+    pushInvoice: (shipperId, invoiceId) => {
+        return Shippers.update({ _id: shipperId }, { $push: { invoiceId: invoiceId } });
+    }
 }
 
 const findOne = (id) => {

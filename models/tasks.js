@@ -3,8 +3,8 @@ import locationSchema from './locations';
 const Schema = mongoose.Schema;
 
 export const tasksSchema = new Schema({
-    address: { type: String },
     receipt_date: { type: Date },
+    estimationTime: { type: Number },
     location: locationSchema
 });
 

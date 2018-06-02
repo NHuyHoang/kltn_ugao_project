@@ -16,6 +16,7 @@ export const TaskType = new GraphQLObjectType({
     name: 'Task',
     fields: () => ({
         receipt_date: { type: GraphQLString },
+        estimationTime: { type: GraphQLString },
         location: {
             type: LocationType,
 
@@ -87,6 +88,7 @@ export const ShipperType = new GraphQLObjectType({
         email: { type: GraphQLString },
         pass: { type: GraphQLString },
         img: { type: GraphQLString },
+        licensePlate: { type: GraphQLString },
         invoices: {
             type: new GraphQLList(InvoiceType),
             resolve(parentValue, args) {

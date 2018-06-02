@@ -1,5 +1,5 @@
 import { Invoices, Customers, Shippers, Stores } from '../models';
-import FCMService from './firebaseAdmin.services';
+import { notifyCustomer } from './firebaseAdmin.services';
 import _ from 'lodash';
 
 export default {
@@ -42,11 +42,20 @@ export default {
                 ).catch(err => console.log(err));
                 return Promise.all([storePromise, customerPromise])
                     .then(value => {
-                        FCMService({ invoiceId: (result._id).toString() });
+                        notifyCustomer({ invoiceId: (result._id).toString() });
                         return { _id: result._id };
                     })
             });
-    }
+    },
+    update: (_id, updateObj) => {
+        return new Promise((resolve, reject) => {
+            if (!_id) reject("invoice id is required for update");
+            return Invoices
+                .findOneAndUpdate({ _id }, updateObj)
+                .then(data => resolve({ success: true }))
+                .catch(err => reject({ success: false }))
+        })
+    },
 }
 
 const findOne = (id) => {
