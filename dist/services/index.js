@@ -67,4 +67,13 @@ Object.defineProperty(exports, 'storesService', {
   }
 });
 
+var _firebaseAdmin = require('./firebaseAdmin.services');
+
+Object.defineProperty(exports, 'FCMServices', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_firebaseAdmin).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

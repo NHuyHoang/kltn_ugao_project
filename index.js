@@ -36,7 +36,7 @@ app.listen(PORT, () => {
 });
 
 
-import { FCMServices } from './services';
+/* import { FCMServices } from './services';
 
 app.use('/fcm', (req, res) => {
     FCMServices().then((response) => {
@@ -47,4 +47,4 @@ app.use('/fcm', (req, res) => {
         console.log('Error sending message:', error);
         res.send(error)
     });
-})
+}) */

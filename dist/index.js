@@ -57,8 +57,15 @@ app.listen(PORT, function () {
     console.log('listening on port ', PORT);
 });
 
-/*   import { storesService } from './services';
+/* import { FCMServices } from './services';
 
-  storesService.findByOwnerId("5ac8d41fd9552734e8148e1b")
-    .then(result => console.log(result))
-    .catch(err => console.log(err)) */
+app.use('/fcm', (req, res) => {
+    FCMServices().then((response) => {
+        // Response is a message ID string.
+        console.log('Successfully sent message:', response);
+        res.send('Successfully sent message: ' + response)
+    }).catch((error) => {
+        console.log('Error sending message:', error);
+        res.send(error)
+    });
+}) */

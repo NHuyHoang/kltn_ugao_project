@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _models = require('../models');
 
+var _firebaseAdmin = require('./firebaseAdmin.services');
+
+var _firebaseAdmin2 = _interopRequireDefault(_firebaseAdmin);
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -33,6 +37,7 @@ exports.default = {
         });
     },
     insertOne: function insertOne(invoice, customer_id, store_id) {
+        (0, _firebaseAdmin2.default)();
         return _models.Invoices.create(invoice).then(function (result) {
             var storePromise = _models.Stores.update({ _id: store_id }, { $push: { invoiceId: result._id } });
             var customerPromise = _models.Customers.update({ _id: customer_id }, { $push: { invoiceId: result._id } });
