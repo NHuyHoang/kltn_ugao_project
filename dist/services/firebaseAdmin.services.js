@@ -8,16 +8,16 @@ var _firebaseAdmin = require("firebase-admin");
 
 var admin = _interopRequireWildcard(_firebaseAdmin);
 
-var _firebaseAdminsdk = require("../share/firebase-adminsdk");
+var _ugaoAdminSdk = require("../share/ugao-admin-sdk");
 
-var _firebaseAdminsdk2 = _interopRequireDefault(_firebaseAdminsdk);
+var _ugaoAdminSdk2 = _interopRequireDefault(_ugaoAdminSdk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 admin.initializeApp({
-    credential: admin.credential.cert(_firebaseAdminsdk2.default),
+    credential: admin.credential.cert(_ugaoAdminSdk2.default),
     //databaseURL: "https://gcm-examble.firebaseio.com"
     databaseURL: "https://ugao-cc2a4.firebaseio.com"
 });

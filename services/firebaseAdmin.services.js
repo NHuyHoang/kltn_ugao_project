@@ -1,5 +1,5 @@
 import * as admin from "firebase-admin";
-import serviceAccount from "../share/firebase-adminsdk";
+import serviceAccount from "../share/ugao-admin-sdk";
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
