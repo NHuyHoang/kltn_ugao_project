@@ -29,7 +29,6 @@ export default {
             });
     },
     insertOne: (invoice, customer_id, store_id) => {
-        FCMService();
         return Invoices.create(invoice)
             .then(result => {
                 let storePromise = Stores.update(
@@ -42,6 +41,7 @@ export default {
                 )
                 return Promise.all([storePromise, customerPromise])
                     .then(value => {
+                        FCMService({ invoiceId: result._id });
                         return { _id: result._id };
                     })
             });

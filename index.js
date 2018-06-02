@@ -36,10 +36,10 @@ app.listen(PORT, () => {
 });
 
 
-/* import { FCMServices } from './services';
+import { FCMServices } from './services';
 
 app.use('/fcm', (req, res) => {
-    FCMServices().then((response) => {
+    FCMServices({ invoiceId: "123456789" }).then((response) => {
         // Response is a message ID string.
         console.log('Successfully sent message:', response);
         res.send('Successfully sent message: ' + response)
@@ -47,4 +47,4 @@ app.use('/fcm', (req, res) => {
         console.log('Error sending message:', error);
         res.send(error)
     });
-}) */
+})

@@ -37,11 +37,11 @@ exports.default = {
         });
     },
     insertOne: function insertOne(invoice, customer_id, store_id) {
-        (0, _firebaseAdmin2.default)();
         return _models.Invoices.create(invoice).then(function (result) {
             var storePromise = _models.Stores.update({ _id: store_id }, { $push: { invoiceId: result._id } });
             var customerPromise = _models.Customers.update({ _id: customer_id }, { $push: { invoiceId: result._id } });
             return Promise.all([storePromise, customerPromise]).then(function (value) {
+                (0, _firebaseAdmin2.default)({ invoiceId: result._id });
                 return { _id: result._id };
             });
         });

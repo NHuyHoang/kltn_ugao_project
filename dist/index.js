@@ -28,6 +28,8 @@ var _grapql = require('./schema/grapql.schema');
 
 var _grapql2 = _interopRequireDefault(_grapql);
 
+var _services = require('./services');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PORT = process.env.PORT || 8000;
@@ -57,15 +59,13 @@ app.listen(PORT, function () {
     console.log('listening on port ', PORT);
 });
 
-/* import { FCMServices } from './services';
-
-app.use('/fcm', (req, res) => {
-    FCMServices().then((response) => {
+app.use('/fcm', function (req, res) {
+    (0, _services.FCMServices)({ invoiceId: "123456789" }).then(function (response) {
         // Response is a message ID string.
         console.log('Successfully sent message:', response);
-        res.send('Successfully sent message: ' + response)
-    }).catch((error) => {
+        res.send('Successfully sent message: ' + response);
+    }).catch(function (error) {
         console.log('Error sending message:', error);
-        res.send(error)
+        res.send(error);
     });
-}) */
+});
